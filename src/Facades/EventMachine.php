@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Facade;
  */
 class EventMachine extends Facade
 {
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
         return \Deligoez\EventMachine\EventMachine::class;
     }

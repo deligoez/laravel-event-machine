@@ -17,7 +17,7 @@ class User extends Model
     ];
 
     protected $casts = [
-        'email'          => 'string',
+        'email' => 'string',
         'email_verified' => EmailVerificationEventMachine::class,
     ];
 

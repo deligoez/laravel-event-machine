@@ -10,7 +10,6 @@ class EmailVerificationEventMachine extends EventMachine
         'unverified',
         'verified',
     ];
+
     public string $initialState = 'unverified';
-
-
 }

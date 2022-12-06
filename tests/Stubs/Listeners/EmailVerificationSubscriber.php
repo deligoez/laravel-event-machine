@@ -6,7 +6,8 @@ use Deligoez\EventMachine\Tests\Stubs\Events\EmailVerifiedEvent;
 
 class EmailVerificationSubscriber
 {
-    public function handleEmailVerified(EmailVerifiedEvent $event) {
+    public function handleEmailVerified(EmailVerifiedEvent $event)
+    {
         $event->user->email_verified->send('verified');
     }
 
@@ -19,7 +20,7 @@ class EmailVerificationSubscriber
     public function subscribe($events)
     {
         return [
-            EmailVerifiedEvent::class => 'handleEmailVerified'
+            EmailVerifiedEvent::class => 'handleEmailVerified',
         ];
     }
 }

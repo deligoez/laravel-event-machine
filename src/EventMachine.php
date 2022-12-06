@@ -10,7 +10,9 @@ abstract class EventMachine implements CastsAttributes
     // region Auto-Assigned Attributes
 
     protected string $attributeName;
+
     protected Model $model;
+
     protected string $currentValue;
 
     // endregion

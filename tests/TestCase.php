@@ -2,9 +2,9 @@
 
 namespace Deligoez\EventMachine\Tests;
 
+use Deligoez\EventMachine\EventMachineServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Deligoez\EventMachine\EventMachineServiceProvider;
 
 class TestCase extends Orchestra
 {

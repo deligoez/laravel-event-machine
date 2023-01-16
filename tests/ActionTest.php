@@ -4,15 +4,15 @@ use Deligoez\EventMachine\Action;
 use Spatie\LaravelData\DataCollection;
 
 test('action', function () {
-    $action = Action::from(['name' => 'login_action_1']);
+    $action = Action::from(['name' => 'action_name']);
 
     expect($action)->toBeInstanceOf(Action::class);
 });
 
 test('actions', function () {
     $actions = Action::collection([
-        ['name' => 'login_action_1'],
-        ['name' => 'login_action_2'],
+        ['name' => 'action_name_1'],
+        ['name' => 'action_name_2'],
     ]);
 
     expect($actions)->toBeInstanceOf(DataCollection::class);

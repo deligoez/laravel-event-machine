@@ -11,4 +11,8 @@ class Action extends Data
     ) {
         self::validate($this);
     }
+    public static function fromString(string $string): self
+    {
+        return new self($string);
+    }
 }

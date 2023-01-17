@@ -4,10 +4,6 @@ use Deligoez\EventMachine\Action;
 use Deligoez\EventMachine\Transition;
 use Spatie\LaravelData\DataCollection;
 
-test('example', function () {
-    expect(true)->toBeTrue();
-});
-
 test('create a transition')
     ->expect(fn() => Transition::from([
         'source_state' => 'source_state_name',

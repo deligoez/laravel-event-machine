@@ -1,6 +1,5 @@
 <?php
 
-use Deligoez\EventMachine\Action;
 use Deligoez\EventMachine\State;
 use Deligoez\EventMachine\Transition;
 use Spatie\LaravelData\DataCollection;

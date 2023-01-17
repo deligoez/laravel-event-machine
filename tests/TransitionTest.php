@@ -4,14 +4,18 @@ use Deligoez\EventMachine\Action;
 use Deligoez\EventMachine\Transition;
 use Spatie\LaravelData\DataCollection;
 
+test('example', function () {
+    expect(true)->toBeTrue();
+});
+
 test('create a transition')
     ->expect(fn() => Transition::from([
         'source_state' => 'source_state_name',
         'target_state' => 'target_state_name',
         'event'        => 'event_name',
         'actions'      => [
-            ['name' => 'action_name_1'],
-            ['name' => 'action_name_2'],
+            'action_name_1',
+            'action_name_2',
         ],
     ]))
     ->toBeInstanceOf(Transition::class)
@@ -27,8 +31,8 @@ test('create multiple transitions')
             'target_state' => 'target_state_name',
             'event'        => 'event_name',
             'actions'      => [
-                ['name' => 'action_name_1'],
-                ['name' => 'action_name_2'],
+                'action_name_1',
+                'action_name_2',
             ],
         ],
         [
@@ -36,8 +40,8 @@ test('create multiple transitions')
             'target_state' => 'target_state_name',
             'event'        => 'event_name',
             'actions'      => [
-                ['name' => 'action_name_1'],
-                ['name' => 'action_name_2'],
+                'action_name_1',
+                'action_name_2',
             ],
         ],
     ]))

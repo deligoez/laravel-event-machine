@@ -16,7 +16,10 @@ class AuthenticationMachine extends MachineDefinition
                     'transitions' => [
                         'login_event' => [
                             'target_state' => 'logged_in_state',
-                            'actions'      => ['login_action'],
+                            'actions'      => [
+                                'login_action_1',
+                                'login_action_2',
+                            ],
                         ],
                     ],
                 ],
@@ -24,7 +27,7 @@ class AuthenticationMachine extends MachineDefinition
                     'transitions' => [
                         'logout_event' => [
                             'target_state' => 'logged_out_state',
-                            'actions'      => ['logout_action'],
+                            'actions'      => 'logout_action',
                         ],
                     ],
                 ],

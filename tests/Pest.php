@@ -1,5 +1,3 @@
 <?php
 
-use Deligoez\EventMachine\Tests\TestCase;
-
-uses(TestCase::class)->in(__DIR__);
+uses(Deligoez\EventMachine\Tests\TestCase::class)->in(__DIR__);

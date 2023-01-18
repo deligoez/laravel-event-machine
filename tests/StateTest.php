@@ -6,21 +6,20 @@ use Spatie\LaravelData\DataCollection;
 
 test('create a state')
     ->expect(fn() => State::from([
-        'name'        => 'state_name',
+        'name'        => 'source_state_name',
         'transitions' => [
             [
-                'source_state' => 'source_state_name',
                 'target_state' => 'target_state_name',
                 'event'        => 'event_name',
                 'actions'      => [
-                    ['name' => 'action_name_1'],
-                    ['name' => 'action_name_2'],
+                    'action_name_1',
+                    'action_name_2',
                 ],
             ],
         ],
     ]))
     ->toBeInstanceOf(State::class)
-    ->name->toBe('state_name')
+    ->name->toBe('source_state_name')
     ->transitions->each->toBeInstanceOf(Transition::class);
 
 test('create multiple states')
@@ -33,8 +32,8 @@ test('create multiple states')
                     'target_state' => 'target_state_name',
                     'event'        => 'event_name',
                     'actions'      => [
-                        ['name' => 'action_name_1'],
-                        ['name' => 'action_name_2'],
+                        'action_name_1',
+                        'action_name_2',
                     ],
                 ],
             ],
@@ -47,12 +46,12 @@ test('create multiple states')
                     'target_state' => 'target_state_name',
                     'event'        => 'event_name',
                     'actions'      => [
-                        ['name' => 'action_name_1'],
-                        ['name' => 'action_name_2'],
+                        'action_name_1',
+                        'action_name_2',
                     ],
                 ],
             ],
-        ]
+        ],
     ]))
     ->toBeInstanceOf(DataCollection::class)
     ->each->toBeInstanceOf(State::class);

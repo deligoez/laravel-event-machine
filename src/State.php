@@ -17,4 +17,16 @@ class State extends Data
     {
         self::validate($this);
     }
+
+    public static function fromArray(array $data): self
+    {
+        foreach ($data['transitions'] as $key => $transition) {
+            $data['transitions'][$key]['source_state'] = $data['name'];
+        }
+
+        return new self(
+            name: $data['name'],
+            transitions: Transition::collection($data['transitions'])
+        );
+    }
 }

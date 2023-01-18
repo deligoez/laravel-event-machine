@@ -18,4 +18,31 @@ class Machine extends Data
     ) {
         self::validate($this);
     }
+
+    public static function fromArray(array $data): self
+    {
+        $states = [];
+        foreach ($data['states'] as $stateName => $state) {
+            $transitions = [];
+
+            foreach ($state['transitions'] as $event => $transition) {
+                $transitions[] = [
+                    'source_state' => $stateName,
+                    'target_state' => $transition['target_state'],
+                    'event'        => $event,
+                    'actions'      => $transition['actions']
+                ];
+            }
+            $states[] = [
+                'name'        => $stateName,
+                'transitions' => $transitions
+            ];
+        }
+
+        return new self(
+            id: $data['id'],
+            initial_state: $data['initial_state'],
+            states: State::collection($states),
+        );
+    }
 }

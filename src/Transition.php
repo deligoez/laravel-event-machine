@@ -5,6 +5,7 @@ namespace Deligoez\EventMachine;
 use Spatie\LaravelData\Attributes\DataCollectionOf;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\DataCollection;
+use Spatie\LaravelData\Optional;
 
 class Transition extends Data
 {
@@ -14,7 +15,7 @@ class Transition extends Data
         public string $event,
 
         #[DataCollectionOf(Action::class)]
-        public DataCollection $actions,
+        public DataCollection|Optional $actions,
     ) {
         self::validate($this);
     }

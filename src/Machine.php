@@ -9,7 +9,7 @@ use Spatie\LaravelData\DataCollection;
 class Machine extends Data
 {
     public function __construct(
-        public string $id,
+        public string $name,
 
         public string $initial_state,
 
@@ -50,7 +50,7 @@ class Machine extends Data
         }
 
         return new self(
-            id: $data['id'],
+            name: $data['name'],
             initial_state: $data['initial_state'],
             states: State::collection($states),
         );

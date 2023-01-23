@@ -9,7 +9,7 @@ class AuthenticationMachine extends MachineDefinition
     protected static function define(): array
     {
         return [
-            'id'            => 'authentication_machine',
+            'name'          => 'authentication_machine',
             'initial_state' => 'logged_out_state',
             'states'        => [
                 'logged_out_state' => [

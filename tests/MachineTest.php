@@ -54,3 +54,15 @@ test('a machine without id has a default id', function () {
         ->toBeString()
         ->not->toBeEmpty();
 });
+
+test('a machine can have a description', function () {
+    $description = 'sample description';
+
+    $machineDefinition = [
+        'description' => $description,
+    ];
+
+    $machine = Machine::define($machineDefinition);
+
+    expect($machine)->description->toBe($description);
+});

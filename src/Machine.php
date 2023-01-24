@@ -7,6 +7,7 @@ class Machine
     public function __construct(
         public string $name,
         public string $id,
+        public ?string $description = null,
     ) {
     }
 
@@ -17,6 +18,7 @@ class Machine
         return new self(
             name: $definition['name'] ?? self::DEFAULT_NAME,
             id: $definition['id'] ?? uniqid(prefix: false, more_entropy: true),
+            description: $definition['description'] ?? null,
         );
     }
 }

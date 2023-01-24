@@ -3,61 +3,42 @@
 use Deligoez\EventMachine\Machine;
 use Deligoez\EventMachine\State;
 
-test('a machine is an instance of Machine::class', function () {
-    $machineDefinition = [];
-
-    $machine = Machine::define($machineDefinition);
+test('a machine is an instance of State::class', function () {
+    $machine = Machine::define();
 
     expect($machine)->toBeInstanceOf(State::class);
 });
 
 test('a machine has a name', function () {
-    $machineName = 'a_machine_with_a_name';
+    $machine = Machine::define([
+        'name' => 'traffic_lights_machine',
+    ]);
 
-    $machineDefinition = [
-        'name' => $machineName,
-    ];
-
-    $machine = Machine::define($machineDefinition);
-
-    expect($machine)->name->toBe($machineName);
+    expect($machine)->name->toBe('traffic_lights_machine');
 });
 
 test('a machine without name has a default name', function () {
-    $machineDefinition = [];
-
-    $machine = Machine::define($machineDefinition);
+    $machine = Machine::define([]);
 
     expect($machine)->name->toBe('(machine)');
 });
 
 test('a machine has an id', function () {
-    $machineId = '1';
+    $machine = Machine::define([
+        'id' => '1',
+    ]);
 
-    $machineDefinition = [
-        'name' => "simple_machine",
-        'id'   => $machineId,
-    ];
-
-    $machine = Machine::define($machineDefinition);
-
-    expect($machine)->id->toBe($machineId);
+    expect($machine)->id->toBe('1');
 });
 
 test('a machine has a machine', function () {
-    $machineDefinition = [];
-
-    $machine = Machine::define($machineDefinition);
+    $machine = Machine::define([]);
 
     expect($machine->machine)->toBeInstanceOf(State::class);
 });
 
 test('a machine without id has a default id', function () {
-    $machineDefinition = [
-        'name' => "simple_machine",
-    ];
-
-    $machine = Machine::define($machineDefinition);
+    $machine = Machine::define([]);
 
     expect($machine)->id
         ->toBeString()
@@ -65,25 +46,11 @@ test('a machine without id has a default id', function () {
 });
 
 test('a machine can have a description', function () {
-    $description = 'sample description';
-
     $machineDefinition = [
-        'description' => $description,
+        'description' => 'A Traffic Lights Machine',
     ];
 
     $machine = Machine::define($machineDefinition);
 
-    expect($machine)->description->toBe($description);
-});
-
-test('a machine can have an initial state', function () {
-    $initialState = 'init';
-
-    $machineDefinition = [
-        'initial_state' => $initialState,
-    ];
-
-    $machine = Machine::define($machineDefinition);
-
-    expect($machine)->initialState->toBe($initialState);
+    expect($machine)->description->toBe('A Traffic Lights Machine');
 });

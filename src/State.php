@@ -2,31 +2,19 @@
 
 namespace Deligoez\EventMachine;
 
-use Spatie\LaravelData\Attributes\DataCollectionOf;
-use Spatie\LaravelData\Data;
-use Spatie\LaravelData\DataCollection;
-
-class State extends Data
+class State
 {
+    public ?State $machine = null;
+
     public function __construct(
         public string $name,
-
-        #[DataCollectionOf(Transition::class)]
-        public DataCollection $transitions,
-    )
-    {
-        self::validate($this);
+        public string $id,
+        public ?State $parent = null,
+        public ?string $description = null,
+        public ?string $initialState = null,
+    ) {
+        //$this->machine = $this->parent ? $this->parent->machine : $this;
+        $this->machine = $this;
     }
 
-    public static function fromArray(array $data): self
-    {
-        foreach ($data['transitions'] as $key => $transition) {
-            $data['transitions'][$key]['source_state'] = $data['name'];
-        }
-
-        return new self(
-            name: $data['name'],
-            transitions: Transition::collection($data['transitions'])
-        );
-    }
 }

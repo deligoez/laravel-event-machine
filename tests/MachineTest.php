@@ -1,13 +1,14 @@
 <?php
 
 use Deligoez\EventMachine\Machine;
+use Deligoez\EventMachine\State;
 
 test('a machine is an instance of Machine::class', function () {
     $machineDefinition = [];
 
     $machine = Machine::define($machineDefinition);
 
-    expect($machine)->toBeInstanceOf(Machine::class);
+    expect($machine)->toBeInstanceOf(State::class);
 });
 
 test('a machine has a name', function () {
@@ -43,6 +44,14 @@ test('a machine has an id', function () {
     expect($machine)->id->toBe($machineId);
 });
 
+test('a machine has a machine', function () {
+    $machineDefinition = [];
+
+    $machine = Machine::define($machineDefinition);
+
+    expect($machine->machine)->toBeInstanceOf(State::class);
+});
+
 test('a machine without id has a default id', function () {
     $machineDefinition = [
         'name' => "simple_machine",
@@ -65,4 +74,16 @@ test('a machine can have a description', function () {
     $machine = Machine::define($machineDefinition);
 
     expect($machine)->description->toBe($description);
+});
+
+test('a machine can have an initial state', function () {
+    $initialState = 'init';
+
+    $machineDefinition = [
+        'initial_state' => $initialState,
+    ];
+
+    $machine = Machine::define($machineDefinition);
+
+    expect($machine)->initialState->toBe($initialState);
 });

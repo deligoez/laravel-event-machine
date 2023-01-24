@@ -4,21 +4,19 @@ namespace Deligoez\EventMachine;
 
 class Machine
 {
-    public function __construct(
-        public string $name,
-        public string $id,
-        public ?string $description = null,
+    private function __construct(
     ) {
     }
 
     private const DEFAULT_NAME = '(machine)';
 
-    public static function define(array $definition): self
+    public static function define(array $definition): State
     {
-        return new self(
+        return new State(
             name: $definition['name'] ?? self::DEFAULT_NAME,
             id: $definition['id'] ?? uniqid(prefix: false, more_entropy: true),
             description: $definition['description'] ?? null,
+            initialState: $definition['initial_state'] ?? null,
         );
     }
 }

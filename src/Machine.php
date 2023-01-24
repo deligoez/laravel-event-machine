@@ -16,6 +16,7 @@ class Machine
             name: $definition['name'] ?? self::DEFAULT_NAME,
             id: $definition['id'] ?? uniqid(prefix: false, more_entropy: true),
             description: $definition['description'] ?? null,
+            parent: $definition['parent'] ?? null,
             initialState: $definition['initial_state'] ?? null,
         );
     }

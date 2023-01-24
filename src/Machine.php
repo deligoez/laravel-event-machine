@@ -10,7 +10,7 @@ class Machine
 
     private const DEFAULT_NAME = '(machine)';
 
-    public static function define(array $definition): State
+    public static function define(?array $definition = null): State
     {
         return new State(
             name: $definition['name'] ?? self::DEFAULT_NAME,

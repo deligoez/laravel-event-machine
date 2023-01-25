@@ -18,6 +18,7 @@ class Machine
             description: $definition['description'] ?? null,
             parent: $definition['parent'] ?? null,
             initialState: $definition['initial_state'] ?? null,
+            states: $definition['states'] ?? null,
         );
     }
 }

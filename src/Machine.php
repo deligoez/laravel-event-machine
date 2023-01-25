@@ -8,13 +8,11 @@ class Machine
     ) {
     }
 
-    private const DEFAULT_NAME = '(machine)';
-
     public static function define(?array $definition = null): State
     {
         return new State(
-            name: $definition['name'] ?? self::DEFAULT_NAME,
-            id: $definition['id'] ?? uniqid(prefix: false, more_entropy: true),
+            name: $definition['name'] ?? null,
+            id: $definition['id'] ?? null,
             description: $definition['description'] ?? null,
             parent: $definition['parent'] ?? null,
             initialState: $definition['initial_state'] ?? null,

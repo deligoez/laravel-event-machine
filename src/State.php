@@ -4,11 +4,13 @@ namespace Deligoez\EventMachine;
 
 class State
 {
+    private const DEFAULT_NAME = '(machine)';
+
     public ?State $machine = null;
 
     /**
-     * @param  string                                    $name
-     * @param  string                                    $id
+     * @param  string|null                               $name
+     * @param  string|null                               $id
      * @param  string|null                               $description
      * @param  string|int|null                           $value
      * @param  \Deligoez\EventMachine\State|string|null  $parent
@@ -16,8 +18,8 @@ class State
      * @param  array|null                                $states  $states
      */
     public function __construct(
-        public string $name,
-        public string $id,
+        public ?string $name = null,
+        public ?string $id = null,
         public ?string $description = null,
         public string|int|null $value = null,
         public State|string|null $parent = null,
@@ -26,8 +28,16 @@ class State
     ) {
         $this->machine = $this->parent ? $this->parent->machine : $this;
 
+        if (is_null($this->name)) {
+            $this->name = self::DEFAULT_NAME;
+        }
+
         if (is_null($this->value)) {
             $this->value = $this->name;
+        }
+
+        if (is_null($this->id)) {
+            $this->id = uniqid(prefix: false, more_entropy: true);
         }
 
         // Initialize states

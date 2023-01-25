@@ -33,6 +33,17 @@ class State
         // Initialize states
         if (!is_null($this->states)) {
             foreach ($this->states as $key => $state) {
+                // If it is only has a state name
+                if (is_string($state)) {
+                    unset($this->states[$key]);
+                    $this->states[$state] = Machine::define([
+                        'name'   => $state,
+                        'parent' => $this,
+                    ]);
+
+                    continue;
+                }
+
                 $this->states[$key] = Machine::define(
                     $state + [
                         'name'   => $key,

@@ -21,6 +21,7 @@ test('a machine can have states', function () {
         expect($stateInstance)
             ->toBeInstanceOf(State::class)
             ->name->toBe($stateName)
+            ->machine->toBe($machine)
             ->parent->toBe($machine);
     }
 });
@@ -43,6 +44,7 @@ test('a machine can have states without implementation', function () {
         expect($stateInstance)
             ->toBeInstanceOf(State::class)
             ->name->toBe($stateName)
+            ->machine->toBe($machine)
             ->parent->toBe($machine);
     }
 });

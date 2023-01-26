@@ -15,14 +15,18 @@ test('a machine can have states', function () {
     ]);
     expect($machine)
         ->toBeInstanceOf(State::class)
-        ->states->toBeArray();
+        ->machine->toBe($machine)
+        ->parent->toBeNull()
+        ->states->toBeArray()
+                ->toHaveCount(3);
 
     foreach ($machine->states as $stateName => $stateInstance) {
         expect($stateInstance)
             ->toBeInstanceOf(State::class)
             ->name->toBe($stateName)
             ->machine->toBe($machine)
-            ->parent->toBe($machine);
+            ->parent->toBe($machine)
+            ->states->toBeNull();
     }
 });
 
@@ -36,15 +40,20 @@ test('a machine can have states without implementation', function () {
             'green',
         ],
     ]);
+
     expect($machine)
         ->toBeInstanceOf(State::class)
-        ->states->toBeArray();
+        ->machine->toBe($machine)
+        ->parent->toBeNull()
+        ->states->toBeArray()
+                ->toHaveCount(3);
 
     foreach ($machine->states as $stateName => $stateInstance) {
         expect($stateInstance)
             ->toBeInstanceOf(State::class)
             ->name->toBe($stateName)
             ->machine->toBe($machine)
-            ->parent->toBe($machine);
+            ->parent->toBe($machine)
+            ->states->toBeNull();
     }
 });

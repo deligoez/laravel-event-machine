@@ -2,6 +2,7 @@
 
 namespace Deligoez\EventMachine\Facades;
 
+use Deligoez\EventMachine\Machine;
 use Illuminate\Support\Facades\Facade;
 
 /**
@@ -11,6 +12,6 @@ class EventMachine extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \Deligoez\EventMachine\Machine::class;
+        return Machine::class;
     }
 }

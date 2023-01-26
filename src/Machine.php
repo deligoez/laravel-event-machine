@@ -19,4 +19,12 @@ class Machine
             states: $definition['states'] ?? null,
         );
     }
+
+    public function start(): State
+    {
+        // TODO: Register events
+        // TODO: Implement start() method.
+
+        return $this;
+    }
 }

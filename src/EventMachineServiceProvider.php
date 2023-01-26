@@ -10,16 +10,13 @@ use Spatie\LaravelPackageTools\Package;
 class EventMachineServiceProvider extends EventServiceProvider
 {
     protected $subscribe = [
-        EmailVerificationSubscriber::class,
+        //
     ];
 
     public function configurePackage(Package $package): void
     {
         $package
             ->name('laravel-event-machine')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-event-machine_table')
-            ->hasCommand(EventMachineCommand::class);
+            ->hasConfigFile();
     }
 }

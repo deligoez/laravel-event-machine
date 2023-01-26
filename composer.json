@@ -50,7 +50,7 @@
     "scripts": {
         "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
         "analyse": "vendor/bin/phpstan analyse",
-        "test": "vendor/bin/pest --colors=always --order-by=random --configuration=pest.xml.dist",
+        "test": "vendor/bin/pest --colors=always --order-by=random --configuration=phpunit.xml.dist",
         "testp": "vendor/bin/pest --parallel --colors=always --order-by=random --configuration=phpunit.xml.dist",
         "coverage": "vendor/bin/pest --coverage --colors=always --order-by=random --configuration=phpunit.xml.dist",
         "coveragep": "vendor/bin/pest --parallel --coverage --colors=always --order-by=random --configuration=phpunit.xml.dist",

@@ -20,7 +20,7 @@ test('a machine has a name', function () {
 test('a machine without name has a default name', function () {
     $machine = Machine::define([]);
 
-    expect($machine)->name->toBe('(machine)');
+    expect($machine)->name->toBe(State::DEFAULT_NAME);
 });
 
 test('a machine has an id', function () {

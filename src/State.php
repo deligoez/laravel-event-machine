@@ -4,7 +4,7 @@ namespace Deligoez\EventMachine;
 
 class State
 {
-    private const DEFAULT_NAME = '(machine)';
+    public const DEFAULT_NAME = 'event_machine';
 
     public ?State $machine = null;
 
@@ -21,24 +21,29 @@ class State
      */
     public function __construct(
         public ?string $name = null,
+        // TODO: ID is only used when starting the machine, not when defining
         public ?string $id = null,
         public ?string $description = null,
         public string|int|null $value = null,
         public State|string|null $parent = null,
         public State|string|null $initialState = null,
         public array|null $states = null,
+        // TODO: Introduce State Paths, ex: machine.red.red_1
     ) {
         // If parent is not defined, use $this (State) as parent
         $this->machine = $this->parent ? $this->parent->machine : $this;
 
         // If name is not defined, use default name
-        $this->name = $this->name ?? self::DEFAULT_NAME;
+        $this->name = !empty($this->name) ? $this->name : self::DEFAULT_NAME;
 
         // If value is not defined, use name as value
         $this->value = $this->value ?? $this->name;
 
         // If id is not defined, generate a unique id
-        $this->id = $this->id ?? uniqid(prefix: false, more_entropy: true);
+        $this->id = !empty($this->id) ? $this->id : uniqid(prefix: false, more_entropy: true);
+
+        // If description is empty, make it null
+        $this->description = !empty($this->description) ? $this->description : null;
 
         // Initialize states
         if (!is_null($this->states)) {
@@ -65,7 +70,7 @@ class State
         }
 
         // If initial state is not initialized, initialize it
-        if (is_string($this->initialState)) {
+        if (!empty($this->initialState)) {
             $this->initialState = (
                 !is_null($this->states) &&
                 array_key_exists($this->initialState, $this->states)
@@ -80,7 +85,7 @@ class State
         }
 
         // If no initial state is defined, use the first state as initial state
-        if (is_null($this->initialState) && !is_null($this->states)) {
+        if (is_null($this->initialState) && (!is_null($this->states) && ($this->states !== []))) {
             $this->initialState = $this->states[array_key_first($this->states)];
         }
     }

@@ -9,13 +9,15 @@ class State
     public ?State $machine = null;
 
     /**
+     * Initialize a new State instance.
+     *
      * @param  string|null                               $name
      * @param  string|null                               $id
      * @param  string|null                               $description
      * @param  string|int|null                           $value
      * @param  \Deligoez\EventMachine\State|string|null  $parent
      * @param  \Deligoez\EventMachine\State|string|null  $initialState
-     * @param  array|null                                $states  $states
+     * @param  array|null                                $states
      */
     public function __construct(
         public ?string $name = null,
@@ -26,24 +28,22 @@ class State
         public State|string|null $initialState = null,
         public array|null $states = null,
     ) {
+        // If parent is not defined, use $this (State) as parent
         $this->machine = $this->parent ? $this->parent->machine : $this;
 
-        if (is_null($this->name)) {
-            $this->name = self::DEFAULT_NAME;
-        }
+        // If name is not defined, use default name
+        $this->name = $this->name ?? self::DEFAULT_NAME;
 
-        if (is_null($this->value)) {
-            $this->value = $this->name;
-        }
+        // If value is not defined, use name as value
+        $this->value = $this->value ?? $this->name;
 
-        if (is_null($this->id)) {
-            $this->id = uniqid(prefix: false, more_entropy: true);
-        }
+        // If id is not defined, generate a unique id
+        $this->id = $this->id ?? uniqid(prefix: false, more_entropy: true);
 
         // Initialize states
         if (!is_null($this->states)) {
             foreach ($this->states as $key => $state) {
-                // If it is only has a state name
+                // If it is only has a state name, initialize a state using that name
                 if (is_string($state)) {
                     unset($this->states[$key]);
                     $this->states[$state] = Machine::define([
@@ -54,6 +54,7 @@ class State
                     continue;
                 }
 
+                // If it is an array, initialize a state using that array state definition
                 $this->states[$key] = Machine::define(
                     $state + [
                         'name'   => $key,

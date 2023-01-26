@@ -50,12 +50,12 @@
     "scripts": {
         "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
         "phpstan": "vendor/bin/phpstan analyse --configuration=phpstan.neon.dist",
-        "test": "vendor/bin/pest --colors=always --order-by=random --configuration=phpunit.xml.dist",
-        "testp": "vendor/bin/pest --parallel --colors=always --order-by=random --configuration=phpunit.xml.dist",
-        "coverage": "vendor/bin/pest --coverage --colors=always --order-by=random --configuration=phpunit.xml.dist",
-        "coveragep": "vendor/bin/pest --parallel --coverage --colors=always --order-by=random --configuration=phpunit.xml.dist",
+        "pest": "vendor/bin/pest --colors=always --order-by=random --configuration=phpunit.xml.dist",
+        "pestp": "vendor/bin/pest --parallel --colors=always --order-by=random --configuration=phpunit.xml.dist",
+        "pestc": "vendor/bin/pest --coverage --colors=always --order-by=random --configuration=phpunit.xml.dist",
+        "pestcp": "vendor/bin/pest --parallel --coverage --colors=always --order-by=random --configuration=phpunit.xml.dist",
         "infection": "vendor/bin/infection --test-framework=pest --show-mutations --threads=max --min-msi=100 --min-covered-msi=100 --ansi",
-        "format": "vendor/bin/pint"
+        "pint": "vendor/bin/pint"
     },
     "config": {
         "sort-packages": true,

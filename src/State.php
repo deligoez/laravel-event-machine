@@ -24,6 +24,7 @@ class State
         // TODO: ID is only used when starting the machine, not when defining
         public ?string $id = null,
         public ?string $description = null,
+        public int $version = 1,
         public string|int|null $value = null,
         public State|string|null $parent = null,
         public State|string|null $initialState = null,

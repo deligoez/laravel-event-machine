@@ -45,6 +45,20 @@ test('a machine without id has a default id', function () {
         ->not->toBeEmpty();
 });
 
+test('a machine has a version', function () {
+    $machine = Machine::define([
+        'version' => 2,
+    ]);
+
+    expect($machine)->version->toBe(1);
+});
+
+test('a machine has a default version', function () {
+    $machine = Machine::define([]);
+
+    expect($machine)->version->toBe(1);
+});
+
 test('a machine can have a description', function () {
     $machineDefinition = [
         'description' => 'A Traffic Lights Machine',

@@ -25,6 +25,6 @@ class Machine
         // TODO: Register events
         // TODO: Implement start() method.
 
-        return $this;
+        return new State();
     }
 }

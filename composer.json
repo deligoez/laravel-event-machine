@@ -49,7 +49,7 @@
     },
     "scripts": {
         "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
-        "analyse": "vendor/bin/phpstan analyse",
+        "phpstan": "vendor/bin/phpstan analyse --configuration=phpstan.neon.dist",
         "test": "vendor/bin/pest --colors=always --order-by=random --configuration=phpunit.xml.dist",
         "testp": "vendor/bin/pest --parallel --colors=always --order-by=random --configuration=phpunit.xml.dist",
         "coverage": "vendor/bin/pest --coverage --colors=always --order-by=random --configuration=phpunit.xml.dist",

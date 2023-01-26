@@ -2,10 +2,10 @@
 
 namespace Deligoez\EventMachine\Tests;
 
-use Deligoez\EventMachine\EventMachineServiceProvider;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\LaravelData\LaravelDataServiceProvider;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Deligoez\EventMachine\EventMachineServiceProvider;
 
 class TestCase extends Orchestra
 {

@@ -1,9 +1,9 @@
 <?php
 
-use Deligoez\EventMachine\Machine;
 use Deligoez\EventMachine\State;
+use Deligoez\EventMachine\Machine;
 
-test('a machine can have nested states', function () {
+test('a machine can have nested states', function (): void {
     $machine = Machine::define([
         'name'          => 'traffic_lights_machine',
         'initial_state' => 'red',
@@ -43,13 +43,13 @@ test('a machine can have nested states', function () {
     }
 });
 
-test('a machine can have deeply nested states', function () {
+test('a machine can have deeply nested states', function (): void {
     $levelOfNesting = random_int(10, 20);
-    $states = null;
+    $states         = null;
 
     foreach (range(1, $levelOfNesting) as $level) {
         $states = [
-            "red_level_".$levelOfNesting - $level + 1 => [
+            'red_level_'.$levelOfNesting - $level + 1 => [
                 'states' => $states,
             ],
         ];

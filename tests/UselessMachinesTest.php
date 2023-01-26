@@ -1,7 +1,7 @@
 <?php
 
-use Deligoez\EventMachine\Machine;
 use Deligoez\EventMachine\State;
+use Deligoez\EventMachine\Machine;
 
 test('a useless machine')
     ->with('useless_machines')
@@ -17,18 +17,18 @@ test('a useless machine')
     ->states->toBeNull();
 
 dataset('useless_machines', [
-    'no definition' => [
+    'no definition'     => [
         //
     ],
-    'empty definition' => [
+    'empty definition'  => [
         [],
     ],
-    'empty name' => [
+    'empty name'        => [
         [
             'name' => '',
         ],
     ],
-    'empty id' => [
+    'empty id'          => [
         [
             'id' => '',
         ],
@@ -38,12 +38,12 @@ dataset('useless_machines', [
             'description' => '',
         ],
     ],
-    'empty states I' => [
+    'empty states I'    => [
         [
             'states',
         ],
     ],
-    'empty states II' => [
+    'empty states II'   => [
         [
             'states' => [],
         ],

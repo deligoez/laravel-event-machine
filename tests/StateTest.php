@@ -1,9 +1,9 @@
 <?php
 
-use Deligoez\EventMachine\Machine;
 use Deligoez\EventMachine\State;
+use Deligoez\EventMachine\Machine;
 
-test('a machine can have states', function ($definition) {
+test('a machine can have states', function ($definition): void {
     $machine = Machine::define($definition);
 
     expect($machine)
@@ -11,7 +11,7 @@ test('a machine can have states', function ($definition) {
         ->machine->toBe($machine)
         ->parent->toBeNull()
         ->states->toBeArray()
-                ->toHaveCount(3);
+        ->toHaveCount(3);
 
     foreach ($machine->states as $stateName => $stateInstance) {
         expect($stateInstance)

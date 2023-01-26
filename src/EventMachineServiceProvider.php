@@ -2,8 +2,8 @@
 
 namespace Deligoez\EventMachine;
 
-use Illuminate\Foundation\Support\Providers\EventServiceProvider;
 use Spatie\LaravelPackageTools\Package;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider;
 
 class EventMachineServiceProvider extends EventServiceProvider
 {

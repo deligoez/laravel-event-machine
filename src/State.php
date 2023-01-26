@@ -11,13 +11,10 @@ class State
     /**
      * Initialize a new State instance.
      *
-     * @param  string|null                               $name
-     * @param  string|null                               $id
-     * @param  string|null                               $description
-     * @param  string|int|null                           $value
+     * @param  string|int|null  $value
      * @param  \Deligoez\EventMachine\State|string|null  $parent
      * @param  \Deligoez\EventMachine\State|string|null  $initialState
-     * @param  array|null                                $states
+     * @param  array|null  $states
      */
     public function __construct(
         public ?string $name = null,
@@ -91,5 +88,4 @@ class State
             $this->initialState = $this->states[array_key_first($this->states)];
         }
     }
-
 }

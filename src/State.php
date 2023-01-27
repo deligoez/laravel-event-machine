@@ -5,7 +5,9 @@ namespace Deligoez\EventMachine;
 class State
 {
     public const DEFAULT_NAME = 'event_machine';
+
     public ?State $machine = null;
+
     public ?string $path = null;
 
     /**

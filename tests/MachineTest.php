@@ -45,12 +45,21 @@ test('a machine without id has a default id', function (): void {
         ->not->toBeEmpty();
 });
 
+test('a machine has a value', function (): void {
+    $machine = Machine::define([
+        'name'  => 'traffic_lights_machine',
+        'value' => 'red',
+    ]);
+
+    expect($machine->value)->toBe('red');
+});
+
 test('a machine has a version', function (): void {
     $machine = Machine::define([
         'version' => 2,
     ]);
 
-    expect($machine)->version->toBe(1);
+    expect($machine)->version->toBe(2);
 });
 
 test('a machine has a default version', function (): void {

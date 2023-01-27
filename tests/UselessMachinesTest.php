@@ -11,6 +11,8 @@ test('a useless machine')
     ->name->toBe(State::DEFAULT_NAME)
     ->value->toBe(State::DEFAULT_NAME)
     ->id->not()->toBeNull()
+    ->path->toBe(State::DEFAULT_NAME)
+    ->version->toBe(1)
     ->description->toBeNull()
     ->parent->toBeNull()
     ->initialState->toBeNull()
@@ -31,6 +33,16 @@ dataset('useless_machines', [
     'empty id'          => [
         [
             'id' => '',
+        ],
+    ],
+    'negative version'  => [
+        [
+            'version' => -1,
+        ],
+    ],
+    'zero version'      => [
+        [
+            'version' => 0,
         ],
     ],
     'empty description' => [

@@ -5,8 +5,8 @@ namespace Deligoez\EventMachine;
 class State
 {
     public const DEFAULT_NAME = 'event_machine';
-
     public ?State $machine = null;
+    public ?string $path = null;
 
     /**
      * Initialize a new State instance.
@@ -18,16 +18,15 @@ class State
      */
     public function __construct(
         public ?string $name = null,
-        // TODO: ID is only used when starting the machine, not when defining
+        // TODO: ID is only used when starting the machine, it is not absolutely required when defining
+        // - $machine->start($id), $machine->startWithId($id)
         public ?string $id = null,
         public ?string $description = null,
-        // This can be useful when preserving the state of the machine
-        public int $version = 1,
+        public ?int $version = 1,
         public string|int|null $value = null,
         public State|string|null $parent = null,
         public State|string|null $initialState = null,
         public array|null $states = null,
-        // TODO: Introduce State Paths, ex: machine.red.red_1
     ) {
         // If parent is not defined, use $this (State) as parent
         $this->machine = $this->parent ? $this->parent->machine : $this;
@@ -41,8 +40,14 @@ class State
         // If id is not defined, generate a unique id
         $this->id = !empty($this->id) ? $this->id : uniqid(prefix: false, more_entropy: true);
 
+        // Version must be greater than 0
+        $this->version = $this->version >= 1 ? $this->version : 1;
+
         // If description is empty, make it null
         $this->description = !empty($this->description) ? $this->description : null;
+
+        // Generate path
+        $this->path = $this->parent ? $this->parent->path.'.'.$this->name : $this->name;
 
         // Initialize states
         if (!is_null($this->states)) {
